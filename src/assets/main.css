@@ -5,3 +5,15 @@
   --font-sans: 'DM Sans', sans-serif;
   --font-serif: 'DM Serif Text', serif;
 }
+
+p {
+  @apply text-lg;
+}
+
+main {
+  @apply max-w-3xl p-20 space-y-4;
+}
+
+a {
+  @apply justify-center gap-2 rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black disabled:pointer-events-none disabled:opacity-50 underline-offset-4 hover:underline;
+}
