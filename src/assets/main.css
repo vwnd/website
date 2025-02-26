@@ -7,7 +7,7 @@
 }
 
 p {
-  @apply text-lg;
+  @apply text-lg font-extralight;
 }
 
 main {
