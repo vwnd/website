@@ -11,7 +11,7 @@ p {
 }
 
 main {
-  @apply max-w-3xl p-20 space-y-4;
+  @apply max-w-3xl p-20 space-y-8;
 }
 
 a {

@@ -2,9 +2,9 @@
 
 <template>
   <main>
-    <h1 class="text-7xl font-serif">Hello!</h1>
+    <h1 class="text-7xl font-serif">Hi there!</h1>
 
-    <h2 class="text-4xl tracking-tight font-serif">I'm Victor.</h2>
+    <h2 class="text-4xl tracking-tight font-serif">I'm Victor, nice to meet you 👋</h2>
 
     <p>
       I help architects and engineers design buildings using the next generation tools for
