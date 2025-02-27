@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full relative min-h-[400px] border rounded-4xl">
+  <div class="w-full h-full relative min-h-[400px] border border-gray-200 rounded-4xl">
     <div class="flex justify-center items-center h-full" v-if="isLoading">Loading...</div>
     <div ref="canvasRef" class="h-full w-full absolute top-0 left-0" />
   </div>
@@ -46,11 +46,11 @@ const initViewer = async () => {
   )
   for (const url of urls) {
     const loader = new SpeckleLoader(viewer.getWorldTree(), url, '')
-    await viewer.loadObject(loader, false)
+    await viewer.loadObject(loader, true)
   }
 
   watchEffect(() => {
-    camera.setCameraView(props.objects, true)
+    camera.setCameraView(props.objects, true, 0.7)
     if (props.objects.length > 0) {
       filtering.resetFilters()
       filtering.isolateObjects(props.objects)
