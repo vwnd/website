@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full relative">
+  <div class="w-full">
     <div class="space-x-4">
       <button
         v-for="option in options"
@@ -12,14 +12,13 @@
       </button>
     </div>
 
-    <div class="bg-green-200 absolute left-0 top-0 -z-10 h-full w-full min-h-[500px]">
-      <canvas />
-    </div>
+    <SpeckleViewer class="mt-6" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import SpeckleViewer from './SpeckleViewer.vue'
 
 const current = ref<null | number>(null)
 
