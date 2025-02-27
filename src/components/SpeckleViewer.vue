@@ -14,6 +14,8 @@ import {
   SpeckleLoader,
   UrlHelper,
   Viewer,
+  ViewMode,
+  ViewModes,
 } from '@speckle/viewer'
 import { onMounted, ref, watchEffect } from 'vue'
 
@@ -38,6 +40,9 @@ const initViewer = async () => {
   const camera = viewer.createExtension(CameraController)
   viewer.createExtension(SelectionExtension)
   const filtering = viewer.createExtension(FilteringExtension)
+  const viewModes = viewer.createExtension(ViewModes)
+
+  viewModes.setViewMode(ViewMode.DEFAULT_EDGES)
 
   camera.setOrthoCameraOn()
 
@@ -46,11 +51,11 @@ const initViewer = async () => {
   )
   for (const url of urls) {
     const loader = new SpeckleLoader(viewer.getWorldTree(), url, '')
-    await viewer.loadObject(loader, true)
+    await viewer.loadObject(loader, false)
   }
 
   watchEffect(() => {
-    camera.setCameraView(props.objects, true, 0.7)
+    camera.setCameraView(props.objects, true, 0.8)
     if (props.objects.length > 0) {
       filtering.resetFilters()
       filtering.isolateObjects(props.objects)
