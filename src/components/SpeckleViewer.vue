@@ -9,15 +9,24 @@
 import {
   CameraController,
   DefaultViewerParams,
+  FilteringExtension,
   SelectionExtension,
   SpeckleLoader,
   UrlHelper,
   Viewer,
 } from '@speckle/viewer'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watchEffect } from 'vue'
 
 const isLoading = ref(true)
 const canvasRef = ref<HTMLDivElement | null>(null)
+const props = withDefaults(
+  defineProps<{
+    objects?: string[]
+  }>(),
+  {
+    objects: () => [],
+  },
+)
 
 const initViewer = async () => {
   if (!canvasRef.value) return
@@ -28,16 +37,27 @@ const initViewer = async () => {
   await viewer.init()
   const camera = viewer.createExtension(CameraController)
   viewer.createExtension(SelectionExtension)
+  const filtering = viewer.createExtension(FilteringExtension)
 
   camera.setOrthoCameraOn()
 
   const urls = await UrlHelper.getResourceUrls(
-    'https://app.speckle.systems/projects/7591c56179/models/32213f5381',
+    'https://app.speckle.systems/streams/298f099115/objects/c17242551524d48c51b77633bbdb55a5',
   )
   for (const url of urls) {
     const loader = new SpeckleLoader(viewer.getWorldTree(), url, '')
-    await viewer.loadObject(loader, true)
+    await viewer.loadObject(loader, false)
   }
+
+  watchEffect(() => {
+    camera.setCameraView(props.objects, true)
+    if (props.objects.length > 0) {
+      filtering.resetFilters()
+      filtering.isolateObjects(props.objects)
+    } else {
+      filtering.resetFilters()
+    }
+  })
 }
 
 onMounted(async () => {

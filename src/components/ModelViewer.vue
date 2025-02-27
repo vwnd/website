@@ -12,20 +12,25 @@
       </button>
     </div>
 
-    <SpeckleViewer class="mt-6" />
+    <SpeckleViewer :objects="currentObjects" class="mt-6" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import SpeckleViewer from './SpeckleViewer.vue'
 
 const current = ref<null | number>(null)
 
+const currentObjects = computed(() => {
+  if (current.value === null) return []
+  return options.find((option) => option.id === current.value)?.objects || []
+})
+
 const options = [
-  { id: 1, name: 'Computational Design' },
-  { id: 2, name: 'Data Analytics' },
-  { id: 3, name: 'Sustainability' },
+  { id: 1, name: 'Computational Design', objects: ['173009c228f9676524fa884299f4a0c4'] },
+  { id: 2, name: 'Data Analytics', objects: ['da0219f3ec079c3ec6f9ea77c33c735c'] },
+  { id: 3, name: 'Sustainability', objects: ['c6c6720e2662d473ba1ea7d80c8c4b9e'] },
 ]
 
 const handleSelect = (id: number) => {
