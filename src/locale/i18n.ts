@@ -16,7 +16,7 @@ const options: I18nOptions = {
     },
     'pt-BR': {
       hello: 'Olá!',
-      intro: 'Eu sou Victor, prazer em conhecê-lo 👋',
+      intro: 'Eu sou Victor, muito prazer 👋',
       whoami:
         'Eu ajudo arquitetos e engenheiros a projetar edifícios usando as ferramentas de design arquitetônico da próxima geração. Atualmente moro em Copenhague trabalhando com uma equipe global na {perkinswill} e {shl}.',
       journey:
