@@ -10,8 +10,8 @@ const { t, locale } = useI18n()
   <main>
     <section class="space-y-8 max-w-xl">
       <div class="flex space-x-4">
-        <IconBrazil @click="locale = 'pt-BR'" class="hover:underline cursor-pointer" />
-        <IconUsa @click="locale = 'en-US'" class="hover:underline cursor-pointer" />
+        <IconBrazil @click="locale = 'pt-BR'" class="cursor-pointer" />
+        <IconUsa @click="locale = 'en-US'" class="cursor-pointer" />
       </div>
 
       <h1 class="text-7xl font-serif">{{ t('hello') }}</h1>
