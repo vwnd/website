@@ -2,7 +2,7 @@ import type { I18nOptions } from 'vue-i18n'
 
 const options: I18nOptions = {
   legacy: false,
-  locale: 'en-US',
+  locale: navigator.language,
   messages: {
     en: {
       hello: 'Hi there!',
