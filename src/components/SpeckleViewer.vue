@@ -12,11 +12,14 @@ import {
   FilteringExtension,
   SelectionExtension,
   SpeckleLoader,
+  StencilOutlineType,
   UrlHelper,
   Viewer,
   ViewMode,
   ViewModes,
+  type SelectionExtensionOptions,
 } from '@speckle/viewer'
+import { hexToArgb } from 'hex-argb-converter'
 import { onMounted, ref, watchEffect } from 'vue'
 
 const isLoading = ref(true)
@@ -38,7 +41,27 @@ const initViewer = async () => {
   const viewer = new Viewer(canvasRef.value, params)
   await viewer.init()
   const camera = viewer.createExtension(CameraController)
-  viewer.createExtension(SelectionExtension)
+  const selection = viewer.createExtension(SelectionExtension)
+
+  const selectionColor = hexToArgb('#222831')
+
+  const selectionOptions: SelectionExtensionOptions = {
+    selectionMaterialData: {
+      id: crypto.randomUUID(),
+      color: selectionColor,
+      emissive: 0x0,
+      opacity: 0.7,
+      roughness: 1,
+      metalness: 0,
+      vertexColors: false,
+      lineWeight: 1,
+      stencilOutlines: StencilOutlineType.NONE,
+      pointSize: 4,
+    },
+  }
+
+  selection.options = selectionOptions
+
   const filtering = viewer.createExtension(FilteringExtension)
   const viewModes = viewer.createExtension(ViewModes)
 
