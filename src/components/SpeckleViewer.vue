@@ -1,6 +1,8 @@
 <template>
   <div class="w-full h-full relative min-h-[400px] border border-gray-200 rounded-4xl">
-    <div class="flex justify-center items-center h-full" v-if="isLoading">Loading...</div>
+    <div class="flex justify-center items-center h-full" v-if="isLoading">
+      <IconSpinner class="size-10" />
+    </div>
     <div ref="canvasRef" class="h-full w-full absolute top-0 left-0" />
   </div>
 </template>
@@ -21,6 +23,7 @@ import {
 } from '@speckle/viewer'
 import { hexToArgb } from 'hex-argb-converter'
 import { onMounted, ref, watchEffect } from 'vue'
+import IconSpinner from './icons/IconSpinner.vue'
 
 const isLoading = ref(true)
 const canvasRef = ref<HTMLDivElement | null>(null)
