@@ -8,6 +8,7 @@
 </template>
 
 <script setup lang="ts">
+import { Labelling } from '@/lib/labelling';
 import {
   CameraController,
   DefaultViewerParams,
@@ -67,6 +68,7 @@ const initViewer = async () => {
 
   const filtering = viewer.createExtension(FilteringExtension);
   const viewModes = viewer.createExtension(ViewModes);
+  const labelling = viewer.createExtension(Labelling);
 
   viewModes.setViewMode(ViewMode.DEFAULT_EDGES);
 
@@ -85,6 +87,12 @@ const initViewer = async () => {
     if (props.objects.length > 0) {
       filtering.resetFilters();
       filtering.isolateObjects(props.objects);
+
+      if (props.objects[0] === 'da0219f3ec079c3ec6f9ea77c33c735c') {
+        labelling.labelObjectArea(props.objects[0]);
+      } else {
+        labelling.cleanLabels();
+      }
     } else {
       filtering.resetFilters();
     }
