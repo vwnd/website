@@ -95,6 +95,7 @@ const initViewer = async () => {
       }
     } else {
       filtering.resetFilters();
+      labelling.cleanLabels();
     }
   });
 };
