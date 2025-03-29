@@ -1,4 +1,4 @@
-import type { I18nOptions } from 'vue-i18n'
+import type { I18nOptions } from 'vue-i18n';
 
 const options: I18nOptions = {
   legacy: false,
@@ -25,6 +25,6 @@ const options: I18nOptions = {
         'Você pode conferir alguns dos meus trabalhos públicos no {github}, ou me seguir no {linkedin}, onde posto sobre tecnologia de design na indústria AEC',
     },
   },
-}
+};
 
-export default options
+export default options;

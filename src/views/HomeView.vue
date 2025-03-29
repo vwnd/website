@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import IconBrazil from '@/components/icons/IconBrazil.vue'
-import IconUsa from '@/components/icons/IconUsa.vue'
-import ModelViewer from '@/components/ModelViewer.vue'
-import { useI18n } from 'vue-i18n'
-const { t, locale } = useI18n()
+import IconBrazil from '@/components/icons/IconBrazil.vue';
+import IconUsa from '@/components/icons/IconUsa.vue';
+import ModelViewer from '@/components/ModelViewer.vue';
+import { useI18n } from 'vue-i18n';
+const { t, locale } = useI18n();
 </script>
 
 <template>
