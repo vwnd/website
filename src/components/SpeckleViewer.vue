@@ -1,18 +1,22 @@
 <template>
   <div class="w-full h-full relative min-h-[400px] border border-gray-200 rounded-4xl">
-    <div class="flex justify-center items-center h-full" v-if="isLoading">
-      <IconSpinner class="size-10" />
-    </div>
+    <Transition>
+      <div class="flex justify-center items-center h-full" v-if="isLoading">
+        <span> <NumberFlow :value="loadingProgress" class="text-7xl" /> % </span>
+      </div>
+    </Transition>
     <div ref="canvasRef" class="h-full w-full absolute top-0 left-0" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { Labelling } from '@/lib/labelling';
+import NumberFlow from '@number-flow/vue';
 import {
   CameraController,
   DefaultViewerParams,
   FilteringExtension,
+  LoaderEvent,
   SelectionExtension,
   SpeckleLoader,
   StencilOutlineType,
@@ -22,11 +26,13 @@ import {
   ViewModes,
   type SelectionExtensionOptions,
 } from '@speckle/viewer';
+import { useDebounceFn } from '@vueuse/core';
 import { hexToArgb } from 'hex-argb-converter';
 import { onMounted, ref, watchEffect } from 'vue';
-import IconSpinner from './icons/IconSpinner.vue';
 
 const isLoading = ref(true);
+const loadingProgress = ref(0);
+
 const canvasRef = ref<HTMLDivElement | null>(null);
 const props = withDefaults(
   defineProps<{
@@ -79,6 +85,13 @@ const initViewer = async () => {
   );
   for (const url of urls) {
     const loader = new SpeckleLoader(viewer.getWorldTree(), url, '');
+
+    loader.on(LoaderEvent.LoadProgress, ({ progress }) => {
+      useDebounceFn(() => {
+        loadingProgress.value = parseInt((progress * 100).toFixed(0));
+      }, 200)();
+    });
+
     await viewer.loadObject(loader, false);
   }
 
