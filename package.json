@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "website",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,9 +10,22 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@number-flow/vue": "^0.4.7",
+    "@nuxt/fonts": "^0.11.1",
+    "@nuxtjs/i18n": "9.5.3",
+    "@speckle/viewer": "^2.23.23",
+    "hex-argb-converter": "^0.0.1",
     "nuxt": "^3.16.2",
+    "tailwindcss": "^4.1.4",
+    "three": "^0.175.0",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
   },
-  "packageManager": "pnpm@10.8.1+sha512.c50088ba998c67b8ca8c99df8a5e02fd2ae2e2b29aaf238feaa9e124248d3f48f9fb6db2424949ff901cffbb5e0f0cc1ad6aedb602cd29450751d11c35023677"
+  "packageManager": "pnpm@10.8.1+sha512.c50088ba998c67b8ca8c99df8a5e02fd2ae2e2b29aaf238feaa9e124248d3f48f9fb6db2424949ff901cffbb5e0f0cc1ad6aedb602cd29450751d11c35023677",
+  "devDependencies": {
+    "@types/three": "^0.175.0",
+    "@vueuse/core": "^13.1.0",
+    "@vueuse/nuxt": "^13.1.0",
+    "@tailwindcss/vite": "^4.1.4"
+  }
 }

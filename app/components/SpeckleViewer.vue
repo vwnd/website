@@ -1,8 +1,12 @@
 <template>
-  <div class="w-full h-full relative min-h-[400px] border border-gray-200 rounded-4xl">
+  <div
+    class="w-full h-full relative min-h-[400px] border border-gray-200 rounded-4xl"
+  >
     <Transition>
       <div class="flex justify-center items-center h-full" v-if="isLoading">
-        <span> <NumberFlow :value="loadingProgress" class="text-7xl" /> % </span>
+        <span>
+          <NumberFlow :value="loadingProgress" class="text-7xl" /> %
+        </span>
       </div>
     </Transition>
     <div ref="canvasRef" class="h-full w-full absolute top-0 left-0" />
@@ -10,8 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { Labelling } from '@/lib/labelling';
-import NumberFlow from '@number-flow/vue';
+import NumberFlow from "@number-flow/vue";
 import {
   CameraController,
   DefaultViewerParams,
@@ -25,10 +28,9 @@ import {
   ViewMode,
   ViewModes,
   type SelectionExtensionOptions,
-} from '@speckle/viewer';
-import { useDebounceFn } from '@vueuse/core';
-import { hexToArgb } from 'hex-argb-converter';
-import { onMounted, ref, watchEffect } from 'vue';
+} from "@speckle/viewer";
+import { hexToArgb } from "hex-argb-converter";
+import { onMounted, ref, watchEffect } from "vue";
 
 const isLoading = ref(true);
 const loadingProgress = ref(0);
@@ -40,7 +42,7 @@ const props = withDefaults(
   }>(),
   {
     objects: () => [],
-  },
+  }
 );
 
 const initViewer = async () => {
@@ -53,7 +55,7 @@ const initViewer = async () => {
   const camera = viewer.createExtension(CameraController);
   const selection = viewer.createExtension(SelectionExtension);
 
-  const selectionColor = hexToArgb('#222831');
+  const selectionColor = hexToArgb("#222831");
 
   const selectionOptions: SelectionExtensionOptions = {
     selectionMaterialData: {
@@ -81,10 +83,10 @@ const initViewer = async () => {
   camera.setOrthoCameraOn();
 
   const urls = await UrlHelper.getResourceUrls(
-    'https://app.speckle.systems/streams/298f099115/objects/c17242551524d48c51b77633bbdb55a5',
+    "https://app.speckle.systems/streams/298f099115/objects/c17242551524d48c51b77633bbdb55a5"
   );
   for (const url of urls) {
-    const loader = new SpeckleLoader(viewer.getWorldTree(), url, '');
+    const loader = new SpeckleLoader(viewer.getWorldTree(), url, "");
 
     loader.on(LoaderEvent.LoadProgress, ({ progress }) => {
       useDebounceFn(() => {
@@ -101,7 +103,7 @@ const initViewer = async () => {
       filtering.resetFilters();
       filtering.isolateObjects(props.objects);
 
-      if (props.objects[0] === 'da0219f3ec079c3ec6f9ea77c33c735c') {
+      if (props.objects[0] === "da0219f3ec079c3ec6f9ea77c33c735c") {
         labelling.labelObjectArea(props.objects[0]);
       } else {
         labelling.cleanLabels();
