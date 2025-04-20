@@ -1,20 +1,25 @@
 <template>
   <div class="w-full mt-0 sm:mt-8">
-    <UiButton
-      variant="link"
-      v-for="option in options"
-      :key="option.id"
-      :class="
-        clsx('cursor-pointer', {
-          underline: current === option.id,
-        })
-      "
-      @click="handleSelect(option.id)"
-    >
-      {{ option.name }}
-    </UiButton>
+    <div class="border rounded-t-xl p-2 space-x-1">
+      <UiButton
+        variant="ghost"
+        v-for="option in options"
+        :key="option.id"
+        :class="
+          clsx('cursor-pointer', {
+            'bg-accent': current === option.id,
+          })
+        "
+        @click="handleSelect(option.id)"
+      >
+        {{ option.name }}
+      </UiButton>
+    </div>
 
-    <SpeckleViewer :objects="currentObjects" class="mt-2" />
+    <SpeckleViewer
+      :objects="currentObjects"
+      class="border border-gray-200 rounded-b-xl border-t-0"
+    />
   </div>
 </template>
 
