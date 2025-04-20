@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full h-full relative min-h-[400px] border border-gray-200 rounded-4xl"
+    class="w-full h-full relative min-h-[400px] border border-gray-200 rounded-xl"
   >
     <Transition>
       <div class="flex justify-center items-center h-full" v-if="isLoading">

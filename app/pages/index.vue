@@ -1,6 +1,6 @@
 <template>
   <main>
-    <section class="space-y-8 max-w-xl">
+    <section class="space-y-8 w-full sm:w-full">
       <div class="flex space-x-4">
         <IconBrazil @click="setLocale('pt-BR')" class="cursor-pointer" />
         <IconUsa @click="setLocale('en')" class="cursor-pointer" />

@@ -11,7 +11,7 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  modules: ["@nuxtjs/i18n", "@vueuse/nuxt", "@nuxt/fonts"],
+  modules: ["@nuxtjs/i18n", "@vueuse/nuxt", "@nuxt/fonts", "shadcn-nuxt"],
   i18n: {
     defaultLocale: "en",
     restructureDir: "app/i18n",
@@ -19,5 +19,16 @@ export default defineNuxtConfig({
       { code: "en", name: "English", file: "en.ts" },
       { code: "pt-BR", name: "Português", file: "pt-BR.ts" },
     ],
+  },
+  shadcn: {
+    /**
+     * Prefix for all the imported component
+     */
+    prefix: "",
+    /**
+     * Directory that the component lives in.
+     * @default "./components/ui"
+     */
+    componentDir: "./components/ui",
   },
 });
