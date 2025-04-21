@@ -46,4 +46,16 @@
 const { setLocale } = useI18n();
 </script>
 
-<style></style>
+<style scoped lang="">
+p {
+  @apply text-lg font-extralight;
+}
+
+main {
+  @apply px-10 py-20 sm:p-20 lg:flex lg:flex-1 gap-6;
+}
+
+a {
+  @apply justify-center gap-2 rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black disabled:pointer-events-none disabled:opacity-50 underline-offset-4 hover:underline;
+}
+</style>

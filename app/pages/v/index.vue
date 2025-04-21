@@ -1,28 +1,26 @@
 <template>
-  <div>Model Viewer</div>
-  <input v-model="model" @keyup.enter="addModel" />
-  <button @click="addModel">Add Model</button>
-  <div>
-    {{ state.models }}
+  <div class="flex w-full h-full bg-green-50">
+    <div class="mx-auto my-auto">{{ x }}</div>
   </div>
 </template>
 
 <script lang="ts" setup>
-const state = reactive<{
-  models: string[];
-}>({
-  models: [],
+import { useSidebar } from "~/components/ui/sidebar";
+
+definePageMeta({
+  layout: "model-viewer",
 });
 
-const model = ref<string>("");
+const { x } = useMouse();
+const { toggleSidebar, setOpen, open } = useSidebar();
 
-const addModel = () => {
-  if (model.value.trim() === "") {
-    return;
+watchEffect(() => {
+  if (x.value < 255 && !open.value) {
+    setOpen(true);
+  } else if (x.value > 255 && open.value) {
+    setOpen(false);
   }
-  state.models.push(model.value);
-  model.value = "";
-};
+});
 </script>
 
 <style></style>
