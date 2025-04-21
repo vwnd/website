@@ -1,5 +1,5 @@
 <template>
-  <main class="main">
+  <main class="px-10 py-20 sm:p-20 lg:flex lg:flex-1 gap-6">
     <section class="space-y-8 max-w-xl">
       <div class="flex space-x-4">
         <IconBrazil @click="setLocale('pt-BR')" class="cursor-pointer" />
@@ -10,7 +10,7 @@
 
       <h2 class="text-4xl tracking-tight font-serif">{{ $t("intro") }}</h2>
 
-      <i18n-t keypath="whoami" tag="p">
+      <i18n-t keypath="whoami" tag="p" class="text-lg font-extralight">
         <template v-slot:perkinswill>
           <a href="https://perkinswill.com" target="_blank">Perkins&Will</a>
         </template>
@@ -21,18 +21,22 @@
 
       <p>{{ $t("journey") }}</p>
 
-      <i18n-t keypath="references" tag="p">
+      <i18n-t keypath="references" tag="p" class="text-lg font-extralight">
         <template v-slot:github>
           <a
             href="http://github.com/vwnd"
             target="_blank"
             rel="noopener noreferrer"
+            class="justify-center gap-2 rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black disabled:pointer-events-none disabled:opacity-50 underline-offset-4 hover:underline"
             >Github</a
           >
         </template>
 
         <template v-slot:linkedin>
-          <a href="https://www.linkedin.com/in/victorwanderley/" target="_blank"
+          <a
+            href="https://www.linkedin.com/in/victorwanderley/"
+            target="_blank"
+            class="justify-center gap-2 rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black disabled:pointer-events-none disabled:opacity-50 underline-offset-4 hover:underline"
             >LinkedIn</a
           >
         </template>
@@ -45,19 +49,3 @@
 <script lang="ts" setup>
 const { setLocale } = useI18n();
 </script>
-
-<style scoped>
-@reference "../assets/main.css";
-
-p {
-  @apply text-lg font-extralight;
-}
-
-.main {
-  @apply px-10 py-20 sm:p-20 lg:flex lg:flex-1 gap-6;
-}
-
-a {
-  @apply justify-center gap-2 rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black disabled:pointer-events-none disabled:opacity-50 underline-offset-4 hover:underline;
-}
-</style>
