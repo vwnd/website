@@ -46,7 +46,7 @@
 const { setLocale } = useI18n();
 </script>
 
-<style scoped lang="">
+<style scoped lang="postcss">
 p {
   @apply text-lg font-extralight;
 }
