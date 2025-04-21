@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="main">
     <section class="space-y-8 max-w-xl">
       <div class="flex space-x-4">
         <IconBrazil @click="setLocale('pt-BR')" class="cursor-pointer" />
@@ -46,12 +46,14 @@
 const { setLocale } = useI18n();
 </script>
 
-<style scoped lang="postcss">
+<style scoped>
+@reference "../assets/main.css";
+
 p {
   @apply text-lg font-extralight;
 }
 
-main {
+.main {
   @apply px-10 py-20 sm:p-20 lg:flex lg:flex-1 gap-6;
 }
 
