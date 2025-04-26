@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col h-screen">
+  <div class="relative flex flex-col h-screen">
     <UiSidebarProvider>
       <ViewerSidebar />
       <slot />
@@ -7,8 +7,6 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-import { UiSidebarProvider } from "#components";
-</script>
+<script lang="ts" setup></script>
 
 <style></style>
