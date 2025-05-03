@@ -28,7 +28,7 @@
           class="h-[120px] bg-white"
         />
         <div class="w-full flex justify-end">
-          <UiButton :disabled="loading" @click=""> Create </UiButton>
+          <UiButton :disabled="loading" @click="createBoard"> Create </UiButton>
         </div>
       </div>
     </div>
@@ -36,8 +36,19 @@
 </template>
 
 <script lang="ts" setup>
-const prompt = ref("");
+const prompt = ref("a k-12 school in downtown Boston, Massachusetts");
 const loading = ref(false);
+
+async function createBoard() {
+  try {
+    $fetch("/api/boards", {
+      method: "POST",
+      body: {
+        prompt: prompt.value,
+      },
+    });
+  } catch (error) {}
+}
 
 const images = ref([
   {
