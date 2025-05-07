@@ -10,7 +10,12 @@
 
       <h2 class="text-4xl tracking-tight font-serif">{{ $t("intro") }}</h2>
 
-      <i18n-t keypath="whoami" tag="p" class="text-lg font-extralight">
+      <i18n-t
+        keypath="whoami"
+        tag="p"
+        class="text-lg font-extralight"
+        scope="global"
+      >
         <template v-slot:perkinswill>
           <a href="https://perkinswill.com" target="_blank">Perkins&Will</a>
         </template>
@@ -21,7 +26,12 @@
 
       <p>{{ $t("journey") }}</p>
 
-      <i18n-t keypath="references" tag="p" class="text-lg font-extralight">
+      <i18n-t
+        keypath="references"
+        tag="p"
+        class="text-lg font-extralight"
+        scope="global"
+      >
         <template v-slot:github>
           <a
             href="http://github.com/vwnd"
