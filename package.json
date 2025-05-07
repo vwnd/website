@@ -23,7 +23,7 @@
     "h3-zod": "^0.5.3",
     "hex-argb-converter": "^0.0.1",
     "lucide-vue-next": "^0.501.0",
-    "nuxt": "^3.16.2",
+    "nuxt": "^3.17.2",
     "openai": "^4.96.0",
     "reka-ui": "^2.2.0",
     "shadcn-nuxt": "2.1.0",
